@@ -1,6 +1,6 @@
 import Products from "../components/Products";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import Categories from "../components/categories";
 import Footer from "../components/Footer";
 import SortBy from "../components/SortBy";

@@ -1,5 +1,5 @@
 import ShowWish from "../components/ShowWish";
-import Navbar from "../components/navbar"; // Updated casing
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import TotalCart from "../components/TotalCart";
