@@ -11,7 +11,7 @@ function ShowCart() {
     };
 
     return (
-        <div className="cart-table w-full my-8 p-4 shadow-lg rounded-lg bg-white sm:w-1/2 mx-auto">
+        <div className="cart-table w-full my-8 shadow-lg rounded-lg bg-white sm:w-1/2 mx-auto">
             <table className="w-full sm:w-full mx-auto"> {/* Adjust table width */}
 
                 <thead>
