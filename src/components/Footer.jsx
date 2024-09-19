@@ -40,12 +40,12 @@ function Footer() {
                         <form className="flex">
                             <input
                                 type="email"
-                                className="px-4 py-2 rounded-l-lg bg-gray-700 text-white focus:outline-none"
+                                className="px-2 py-2 rounded-l-lg bg-gray-700 text-white focus:outline-none"
                                 placeholder="Enter your email"
                             />
                             <button
                                 type="submit"
-                                className="px-4 py-2 bg-yellow-500 text-white rounded-r-lg hover:bg-yellow-600"
+                                className="px-2 py-2 bg-yellow-500 text-white rounded-r-lg hover:bg-yellow-600"
                             >
                                 Subscribe
                             </button>
