@@ -52,8 +52,9 @@ function ProductDetails({ id }) {
   }
 
   return (
-    <div>
-      <div className="flex flex-col sm:flex-row flex-items-center justify-center h-screen sm:mb-0 mb-[195px]">
+    <div className="">
+      {/* For mobile version, make sure height and overflow are handled */}
+      <div className="flex flex-col sm:flex-row items-center justify-center h-auto  sm:mb-0">
         <div className="flex flex-row gap-2 w-full sm:w-1/2">
           <div>
             {/* Check if images is an array */}
@@ -63,7 +64,7 @@ function ProductDetails({ id }) {
                   key={index}
                   src={image}
                   alt={product.title}
-                  className="w-32 h-32 mb-4"
+                  className="w-24 h-24 sm:w-32  mb-4 "
                   onClick={() => setSelectedImage(image)}
                   style={{
                     border:
@@ -76,7 +77,7 @@ function ProductDetails({ id }) {
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-32 h-32 mb-4"
+                className="w-32 h-32 mb-4 "
                 onClick={() => setSelectedImage(product.image)}
                 style={{
                   border:
@@ -95,14 +96,14 @@ function ProductDetails({ id }) {
         </div>
 
         <div
-          className="flex flex-col gap-10 w-full sm:w-1/2 pt-10 pl-10"
+          className="flex flex-col gap-10 w-full sm:w-1/2 pt-10 sm:pl-10"
           style={{
-            background: backgroundGradient, // Keep the background gradient fixed
+            background: backgroundGradient,
           }}
         >
-          <h1 className="text-3xl text-white font-bold mb-4">{product.title}</h1>
-          <p className="text-5xl text-white font-bold">${product.price}</p>
-          <p className="text-lg text-white mb-4">{product.description}</p>
+          <h1 className="text-2xl sm:text-3xl text-white font-bold mb-4">{product.title}</h1>
+          <p className="text-4xl sm:text-5xl text-white font-bold">${product.price}</p>
+          <p className="text-base sm:text-lg text-white mb-4">{product.description}</p>
 
           <div className="mb-4 flex ">
             <label htmlFor="size" className="text-white">
@@ -125,7 +126,6 @@ function ProductDetails({ id }) {
           <div className="flex flex-row gap-4">
             <AddToCartButton id={product.id} image={product.image} title={product.title} price={product.price} />
             <BuyNowButton id={product.id} image={product.image} title={product.title} price={product.price} />
-            
             <AddtoWishlistButton id={product.id} image={product.image} title={product.title} price={product.price} />
           </div>
 
@@ -172,7 +172,9 @@ function ProductDetails({ id }) {
           </div>
         </div>
       </div>
-      <div className=" sm:pt-0">
+
+      {/* Adjust margin for mobile below the product details */}
+      <div className="sm:pt-0">
         <CatDisplay
           link={`https://fakestoreapi.com/products/category/${product.category}`}
           categoryTitle={`Other ${product.category} that you may like...`}

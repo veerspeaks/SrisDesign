@@ -6,13 +6,14 @@ import { useParams } from "react-router-dom";
 
 const Details = () => {
     const { id } = useParams();
+
     return (
         <>  
             <Navbar />
             <Categories />
-            <div className="flex flex-col sm:w-full sm:flex-row">
-                
-                <div className="w-full pt-80 sm:pt-0">
+            {/* Add sufficient margin-top to prevent overlap on mobile */}
+            <div className="flex flex-col sm:w-full sm:flex-row sm:mt-0">
+                <div className="w-full sm:pt-0 ">
                     <ProductDetails id={id} />
                 </div>
             </div>
