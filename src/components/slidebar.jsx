@@ -50,8 +50,9 @@ function Slidebar() {
   const { id, image, description, title, price } = products[currentIndex]; // Get the current product
 
   return (
-    <Link to={`/product/${id}`}>
+    
     <div className="relative w-full overflow-hidden">
+      <Link to={`/product/${id}`}>
       <div
         className={`flex flex-row p-10 border rounded-lg h-80 w-full shadow-md items-center justify-center transition-opacity duration-500 ease-in-out ${fade ? 'opacity-0' : 'opacity-100'}`}
       >
@@ -70,7 +71,7 @@ function Slidebar() {
           
         </div>
       </div>
-
+      </Link>
       {/* Dots for controlling the slides */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {products.map((_, index) => (
@@ -82,7 +83,7 @@ function Slidebar() {
         ))}
       </div>
     </div>
-    </Link>
+    
   );
 }
 
