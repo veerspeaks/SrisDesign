@@ -35,6 +35,13 @@ const Home = () => {
         gradColor1="#007BFF"
         gradColor2="#00BFFF"
       />
+      <CatDisplay
+        link="https://fakestoreapi.com/products/category/women&apos;s%20clothing"
+        categoryTitle="Women&apos;s Clothing"
+        categoryDescription="Explore a wide range of women&apos;s clothing, from casual wear to formal attire, and find the perfect outfit for your style."
+        gradColor1="#FFA500"
+        gradColor2="#FFD700"
+      />
       <Footer />
     </>
   );
