@@ -1,5 +1,5 @@
 import ShowCart from "../components/ShowCart";
-import Navbar from "../components/navbar"; // Changed to lowercase
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import TotalCart from "../components/TotalCart";
