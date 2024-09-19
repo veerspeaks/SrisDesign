@@ -20,50 +20,59 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-56 items-center sm:justify-between bg-[#FFF7F7] sm:flex-row sm:h-24">
-      <div className="sm:w-64 sm:h-48 sm:pt-16">
+    <div className="flex flex-col w-full h-auto items-center bg-[#FFF7F7] sm:flex-row sm:h-24 sm:justify-between">
+      {/* Mobile header */}
+      <div className="flex justify-between items-center w-full px-4 h-16 sm:hidden">
+        <a href="/" className="flex justify-center">
+          <img src="/assets/image_21.png" alt="logo" className="h-15" />
+        </a>
+        <button
+          onClick={toggleMenu}
+          className="bg-[#6439FF] hover:bg-[#4F75FF] text-white font-bold py-2 px-2 rounded-full"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Desktop logo - unchanged */}
+      <div className="hidden sm:block sm:w-64 sm:h-48 sm:pt-16">
         <a href="/">
           <img src="/assets/image_21.png" alt="logo" />
         </a>
       </div>
-      <div className="searchbar flex pt-4 items-center">
-        <Search /> 
-        <div>
-          <button
-            onClick={toggleMenu}
-            className="bg-[#6439FF] hover:bg-[#4F75FF] text-white font-bold py-2 px-2 rounded-full ml-2 sm:hidden"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </div>
+
+      {/* Search bar for desktop */}
+      <div className="hidden sm:flex searchbar flex pt-4 items-center pr-4 sm:pr-0">
+        <Search />
       </div>
 
-      
-      {/* menu button for large screen */}
+      {/* Desktop menu - unchanged */}
       <div className="hidden sm:flex flex-row gap-4 pr-10 items-center">
         <ul className="flex flex-row gap-4 pt-4">
           <li className="pt-1.5">
             {user ? (
               <span className="font-bold">{user.name}</span>
             ) : (
-              <a href="#" className="font-bold" onClick={() => setIsSignInModalOpen(true)}>
-                Sign In
-              </a>
+              <>
+                <a href="#" className="font-bold" onClick={() => setIsSignInModalOpen(true)}>
+                  Sign In
+                </a>
+                <SignInModal isOpen={isSignInModalOpen} onClose={() => setIsSignInModalOpen(false)} onSignIn={handleSignIn} />
+              </>
             )}
-            <SignInModal isOpen={isSignInModalOpen} onClose={() => setIsSignInModalOpen(false)} onSignIn={handleSignIn} />
           </li>
           <li className="pt-1.5">
             <a href="/order" className="font-bold">
@@ -105,22 +114,32 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* menu button for small screen */}
+      {/* Mobile menu */}
       <div
-        className={`sm:hidden flex flex-col gap-4 pt-4 items-center bg-[#FFF7F7] w-full transition-all duration-300 ease-in-out ${
+        className={`sm:hidden flex flex-col gap-4 pt-4 pb-6 items-center bg-[#FFF7F7] w-full transition-all duration-300 ease-in-out ${
           isModalOpen
             ? "max-h-screen opacity-100"
             : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
+        <div className="searchbar flex pt-4 items-center px-4">
+          <Search className="w-full" />
+        </div>
         <ul className="flex flex-col gap-4 pt-4 items-center">
           <li className="pt-1.5">
             {user ? (
               <span className="font-bold">{user.name}</span>
             ) : (
-              <a href="#" className="font-bold" onClick={() => setIsSignInModalOpen(true)}>
-                Sign In
-              </a>
+              <>
+                <a href="#" className="font-bold" onClick={() => setIsSignInModalOpen(true)}>
+                  Sign In
+                </a>
+                <SignInModal 
+                  isOpen={isSignInModalOpen} 
+                  onClose={() => setIsSignInModalOpen(false)} 
+                  onSignIn={handleSignIn} 
+                />
+              </>
             )}
           </li>
           <li className="pt-1.5">
@@ -132,7 +151,7 @@ const Navbar = () => {
             <a href="/wishlist" className="font-bold flex items-center gap-2 relative">
               <img
                 className="w-10 h-10"
-                src="/assets/294547-673ab7.svg"
+                src="/assets/1294473-673ab7.svg"
                 alt="react"
               />
               Wishlist

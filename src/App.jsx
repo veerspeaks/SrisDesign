@@ -27,6 +27,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/order" element={<Order />} />
           <Route path="/customdesign" element={<CustomDesign />} />
+          {/* <Route path="/signin" element={<SignInModal />} /> */}
         </Routes>
       </Router>
       </PersistGate>

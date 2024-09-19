@@ -59,7 +59,8 @@ function YouMayLike({link}) {
                             id={product.id} 
                             image={product.image} 
                             title={product.title} 
-                            price={product.price} 
+                            price={product.price}
+                            
                         />
                     ))}
                 </div>

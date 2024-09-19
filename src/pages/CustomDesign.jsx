@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Navbar from '../components/Navbar';
+import Categories from '../components/categories';
+import Footer from '../components/Footer';
 
 const CustomDesign = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +28,12 @@ const CustomDesign = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className=" flex-col min-h-screen bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center ">
+      <Navbar />
+      <div className='w-full pb-10'>
+      <Categories />
+      </div>
+      
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -97,6 +105,10 @@ const CustomDesign = () => {
           </div>
         </form>
       </motion.div>
+      <div className='w-full pt-10'>
+        <Footer />
+      </div>
+      
     </div>
   );
 };

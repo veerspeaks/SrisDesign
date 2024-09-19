@@ -22,7 +22,7 @@ function AddToCartButton({id, image, title, price}) {
     return (
         <div>
             {!isInCart ? (
-                <button className="bg-[#FFFFFF] text-black px-4 py-2 rounded-full" onClick={handleAddToCart}>
+                <button className="bg-[#FFFFFF] text-black px-2 py-2 rounded-full" onClick={handleAddToCart}>
                     Add to cart
                 </button>
             ) : <Counter initialQuantity={quantity} productId={id} />}

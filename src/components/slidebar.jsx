@@ -50,27 +50,25 @@ function Slidebar() {
   const { id, image, description, title, price } = products[currentIndex]; // Get the current product
 
   return (
-    
     <div className="relative w-full overflow-hidden">
       <Link to={`/product/${id}`}>
-      <div
-        className={`flex flex-row p-10 border rounded-lg h-80 w-full shadow-md items-center justify-center transition-opacity duration-500 ease-in-out ${fade ? 'opacity-0' : 'opacity-100'}`}
-      >
-        <div className="w-1/3 h-full flex justify-center items-center">
-          <img
-            src={image}
-            alt="Fetched from API"
-            className="max-h-full max-w-full object-contain"
-          />
-        </div>
-        <div className="flex flex-col p-10 items-center justify-center w-2/3">
-          <h1 className="text-2xl font-bold text-center">{description}</h1>
-          <div className='flex justify-center items-center mt-10'>
-          <BuyNowButton id={id} image={image} title={title} price={price} />
+        <div
+          className={`flex flex-row p-4 border rounded-lg h-60 w-full shadow-md items-center justify-center transition-opacity duration-500 ease-in-out ${fade ? 'opacity-0' : 'opacity-100'} sm:h-80 sm:p-10`}
+        >
+          <div className="w-1/3 h-full flex justify-center items-center sm:w-1/3">
+            <img
+              src={image}
+              alt="Fetched from API"
+              className="max-h-full max-w-full object-contain"
+            />
           </div>
-          
+          <div className="flex flex-col p-4 items-center justify-center w-2/3 sm:w-2/3">
+            <h1 className="text-sm font-bold text-center sm:text-2xl">{title}</h1>
+            <div className='flex justify-center items-center mt-4 sm:mt-10'>
+              <BuyNowButton id={id} image={image} title={title} price={price} />
+            </div>
+          </div>
         </div>
-      </div>
       </Link>
       {/* Dots for controlling the slides */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
@@ -83,7 +81,6 @@ function Slidebar() {
         ))}
       </div>
     </div>
-    
   );
 }
 

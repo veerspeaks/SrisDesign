@@ -31,7 +31,7 @@ function AddtoWishlistButton({ id, image, title, price, useIcon = false }) {
                     )}
                 </button>
             ) : (
-                <button className="bg-[#6C48C5] text-white px-4 py-2 rounded-full" onClick={handleWishlistToggle}>
+                <button className="bg-[#6C48C5] text-white px-2 py-2 rounded-full" onClick={handleWishlistToggle}>
                     {isInWishlist ? "Added to wishlist" : "Add to wishlist"}
                 </button>
             )}

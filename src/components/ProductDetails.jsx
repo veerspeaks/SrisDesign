@@ -53,7 +53,7 @@ function ProductDetails({ id }) {
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row flex-items-center justify-center h-screen">
+      <div className="flex flex-col sm:flex-row flex-items-center justify-center h-screen sm:mb-0 mb-[195px]">
         <div className="flex flex-row gap-2 w-full sm:w-1/2">
           <div>
             {/* Check if images is an array */}
@@ -172,7 +172,7 @@ function ProductDetails({ id }) {
           </div>
         </div>
       </div>
-      <div>
+      <div className=" sm:pt-0">
         <CatDisplay
           link={`https://fakestoreapi.com/products/category/${product.category}`}
           categoryTitle={`Other ${product.category} that you may like...`}

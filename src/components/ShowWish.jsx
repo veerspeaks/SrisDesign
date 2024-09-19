@@ -12,7 +12,7 @@ function ShowWish() {
     };
 
     return (
-        <div className="cart-table max-w-4xl mx-auto my-8 p-4 shadow-lg rounded-lg bg-white">
+        <div className="cart-table max-w-4xl mx-auto my-8 p-4 sm:shadow-lg rounded-lg sm:bg-white">
             <table className="w-full border-collapse">
                 <thead>
                     <tr className="bg-[#FFF7F7] border-b-2 border-purple-500">

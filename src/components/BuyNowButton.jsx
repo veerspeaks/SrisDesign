@@ -12,7 +12,7 @@ function BuyNowButton({id, image, title, price}) {
 
     return (
         <div>
-            <button className="bg-[#1230AE] text-white px-4 py-2 rounded-full" onClick={handleBuyNow}>
+            <button className="bg-[#1230AE] text-white  px-4 py-2 rounded-full" onClick={handleBuyNow}>
                 Buy Now
             </button>
         </div>

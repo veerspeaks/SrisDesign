@@ -7,14 +7,18 @@ import { useParams } from "react-router-dom";
 const Details = () => {
     const { id } = useParams();
     return (
-        <>
+        <>  
             <Navbar />
             <Categories />
-            <ProductDetails id={id} />
-            
-            <Footer />
+            <div className="flex flex-col sm:w-full sm:flex-row">
+                
+                <div className="w-full pt-80 sm:pt-0">
+                    <ProductDetails id={id} />
+                </div>
+            </div>
+            <Footer className="mt-auto" />
         </>
     );
 }
 
-export default Details; 
+export default Details;

@@ -21,10 +21,10 @@ function Cart() {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="flex w-full h-screen" style={{ background: backgroundGradient }}>
-        <div className="flex flex-col w-2/3 pt-6 pl-6">
+      <div className="flex flex-col sm:flex-row w-full flex-grow" style={{ background: backgroundGradient }}>
+        <div className="flex flex-col w-full sm:w-2/3 sm:pt-6 sm:pl-6 pb-6 sm:pb-0">
           <span className="text-8xl font-bold text-white">Cart</span>
           {cartItems.length === 0 ? (
             <div className="text-white text-center text-4xl italic">No items in cart</div>
@@ -33,9 +33,9 @@ function Cart() {
               <ShowCart />
             </div>
           )}
-          <div className="flex justify-center pt-16 gap-36">
-            <span className="text-2xl font-bold text-white">Have a Coupon?</span>
-            <div className="flex flex-row gap-4">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:pt-16 sm:gap-36">
+            <span className="text-sm sm:text-2xl font-bold text-white">Have a Coupon?</span>
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
               <input
                 type="text"
                 placeholder="Enter your coupon"
@@ -45,12 +45,11 @@ function Cart() {
             </div>
           </div>
         </div>
-        <div className="w-1/3" style={{ background: backgroundGradient }}>
-          <TotalCart total={3435} />
+        <div className="w-full sm:w-1/3 sm:pt-6 sm:pr-6" style={{ background: backgroundGradient }}>
+          <div className="flex flex-col pb-4"><TotalCart total={3435} /></div> 
         </div>
       </div>
-
-      <Footer />
+      <Footer className="mt-auto" />
     </div>
   );
 }

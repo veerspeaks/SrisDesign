@@ -49,15 +49,15 @@ function CatDisplay({ link, categoryTitle, categoryDescription, gradColor1, grad
                     scrollbar-width: none;     /* Firefox */
                 }
             `}</style>
-            <div className="flex w-full items-center">
+            <div className="flex flex-col lg:flex-row w-full items-center">
                 {/* Left text content */}
-                <div className="flex flex-col w-1/3">
-                    <span className="text-white text-2xl font-bold px-4">{categoryTitle}</span>
-                    <span className="text-white text-xl italic p-4">{categoryDescription}</span>
+                <div className="flex flex-col w-full lg:w-1/3 p-4">
+                    <span className="text-white text-2xl font-bold">{categoryTitle}</span>
+                    <span className="text-white text-xl italic">{categoryDescription}</span>
                     {categoryId && (
                         <a
                             href={`/products/${categoryId}`}
-                            className="text-white text-xl italic pt-32 pl-4 pr-8 text-right underline cursor-pointer"
+                            className="text-white text-xl italic pt-8 lg:pt-32 text-right underline cursor-pointer"
                         >
                             See More &gt;
                         </a>
@@ -65,10 +65,10 @@ function CatDisplay({ link, categoryTitle, categoryDescription, gradColor1, grad
                 </div>
 
                 {/* Scrollable product list */}
-                <div className="relative w-2/3">
+                <div className="relative w-full lg:w-2/3 mt-4 lg:mt-0">
                     {/* Left Scroll button */}
                     <button
-                        className="absolute left-0 top-1/2 transform -translate-y-1/2 w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center z-10 bg-gray-300 text-black transition-colors"
+                        className="absolute left-0 top-1/2 transform -translate-y-1/2 w-8 h-8 lg:w-12 lg:h-12 border border-gray-400 rounded-full flex items-center justify-center z-10 bg-gray-300 text-black transition-colors"
                         onClick={handleScrollLeft}
                     >
                         &lt;
@@ -78,7 +78,7 @@ function CatDisplay({ link, categoryTitle, categoryDescription, gradColor1, grad
                     <div
                         id="scroll-container"
                         ref={scrollContainerRef} // Reference the scrollable container
-                        className="flex overflow-x-scroll gap-4 p-4"
+                        className="flex overflow-x-scroll p-4"
                         style={{ width: '100%', scrollBehavior: 'smooth' }}
                     >
                         {products.map((product) => (
@@ -88,7 +88,7 @@ function CatDisplay({ link, categoryTitle, categoryDescription, gradColor1, grad
 
                     {/* Right Scroll button */}
                     <button
-                        className="absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center z-10 bg-gray-300 text-black text-bold transition-colors"
+                        className="absolute right-0 top-1/2 transform -translate-y-1/2 w-8 h-8 lg:w-12 lg:h-12 border border-gray-400 rounded-full flex items-center justify-center z-10 bg-gray-300 text-black transition-colors"
                         onClick={handleScrollRight}
                     >
                         &gt;

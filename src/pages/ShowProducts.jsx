@@ -4,13 +4,13 @@ import Navbar from "../components/Navbar";
 import Categories from "../components/categories";
 import Footer from "../components/Footer";
 import SortBy from "../components/SortBy";
-import Product from "../components/Product";
 import { useEffect, useState } from "react";
 import CatDisplay from "../components/CatDisplay";
 
 function ShowProducts() {
   const [backgroundGradient, setBackgroundGradient] = useState("");
   const [sortOption, setSortOption] = useState("Low to High");
+  const [isSortByOpen, setIsSortByOpen] = useState(false); // New state for dropdown toggle
 
   useEffect(() => {
     try {
@@ -32,11 +32,31 @@ function ShowProducts() {
     <div>
       <Navbar />
       <Categories />
-      <div className="flex w-full">
-        <div className="w-1/3" style={{ background: backgroundGradient }}>
-          <SortBy onSortChange={setSortOption} />
+      <div className="flex flex-col sm:flex-row w-full">
+        <div className="w-full sm:w-1/3" style={{ background: backgroundGradient }}>
+          {/* Mobile version toggle */}
+          <div className="block sm:hidden p-4">
+            <button
+              className="bg-gray-200 text-black px-4 py-2 rounded-md shadow-md flex items-center justify-between w-full"
+              onClick={() => setIsSortByOpen(!isSortByOpen)}
+            >
+              Sort By
+              <span className={`transform transition-transform ${isSortByOpen ? 'rotate-180' : 'rotate-0'}`}>
+                ▼
+              </span>
+            </button>
+            {isSortByOpen && (
+              <div className="mt-2 p-4 rounded-md shadow-md" style={{ background: backgroundGradient }}>
+                <SortBy onSortChange={setSortOption} isMobile={true} />
+              </div>
+            )}
+          </div>
+          {/* Desktop version */}
+          <div className="hidden sm:block p-4">
+            <SortBy onSortChange={setSortOption} isMobile={false} />
+          </div>
         </div>
-        <div className="w-2/3">
+        <div className="w-full sm:w-2/3">
           <Products
             link={`https://fakestoreapi.com/products/category/${categoryId}`}
             sortOption={sortOption}
