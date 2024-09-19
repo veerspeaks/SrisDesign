@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import  BuyNowButton  from './BuyNowButton';
+import { Link } from 'react-router-dom';
 
 function Slidebar() {
   const [products, setProducts] = useState([]); // Array to store all items
@@ -49,6 +50,7 @@ function Slidebar() {
   const { id, image, description, title, price } = products[currentIndex]; // Get the current product
 
   return (
+    <Link to={`/product/${id}`}>
     <div className="relative w-full overflow-hidden">
       <div
         className={`flex flex-row p-10 border rounded-lg h-80 w-full shadow-md items-center justify-center transition-opacity duration-500 ease-in-out ${fade ? 'opacity-0' : 'opacity-100'}`}
@@ -80,6 +82,7 @@ function Slidebar() {
         ))}
       </div>
     </div>
+    </Link>
   );
 }
 
