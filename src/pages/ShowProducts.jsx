@@ -32,10 +32,10 @@ function ShowProducts() {
     <div>
       <Navbar />
       <Categories />
-      <div className="flex flex-col sm:flex-row w-full">
-        <div className="w-full sm:w-1/3" style={{ background: backgroundGradient }}>
+      <div className="flex flex-col md:flex-row w-full">
+        <div className="w-full md:w-1/3" style={{ background: backgroundGradient }}>
           {/* Mobile version toggle */}
-          <div className="block sm:hidden p-4">
+          <div className="block md:hidden p-4">
             <button
               className="bg-gray-200 text-black px-4 py-2 rounded-md shadow-md flex items-center justify-between w-full"
               onClick={() => setIsSortByOpen(!isSortByOpen)}
@@ -52,11 +52,11 @@ function ShowProducts() {
             )}
           </div>
           {/* Desktop version */}
-          <div className="hidden sm:block p-4">
+          <div className="hidden md:block p-4">
             <SortBy onSortChange={setSortOption} isMobile={false} />
           </div>
         </div>
-        <div className="w-full sm:w-2/3">
+        <div className="w-full md:w-2/3">
           <Products
             link={`https://fakestoreapi.com/products/category/${categoryId}`}
             sortOption={sortOption}

@@ -12,8 +12,8 @@ const Details = () => {
             <Navbar />
             <Categories />
             {/* Add sufficient margin-top to prevent overlap on mobile */}
-            <div className="flex flex-col sm:w-full sm:flex-row sm:mt-0">
-                <div className="w-full sm:pt-0 ">
+            <div className="flex flex-col md:w-full md:flex-row md:mt-0">
+                <div className="w-full md:pt-0 ">
                     <ProductDetails id={id} />
                 </div>
             </div>

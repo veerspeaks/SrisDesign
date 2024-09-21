@@ -54,8 +54,8 @@ function ProductDetails({ id }) {
   return (
     <div className="">
       {/* For mobile version, make sure height and overflow are handled */}
-      <div className="flex flex-col sm:flex-row items-center justify-center h-auto  sm:mb-0">
-        <div className="flex flex-row gap-2 w-full sm:w-1/2">
+      <div className="flex flex-col md:flex-row items-center justify-center h-auto  md:mb-0">
+        <div className="flex flex-row gap-2 w-full md:w-1/2">
           <div>
             {/* Check if images is an array */}
             {Array.isArray(product.images) ? (
@@ -64,7 +64,7 @@ function ProductDetails({ id }) {
                   key={index}
                   src={image}
                   alt={product.title}
-                  className="w-24 h-24 sm:w-32  mb-4 "
+                  className="w-24 h-24 md:w-32  mb-4 "
                   onClick={() => setSelectedImage(image)}
                   style={{
                     border:
@@ -96,14 +96,14 @@ function ProductDetails({ id }) {
         </div>
 
         <div
-          className="flex flex-col gap-10 w-full sm:w-1/2 pt-10 sm:pl-10"
+          className="flex flex-col gap-10 w-full pl-3 md:w-1/2 pt-10 md:pl-10"
           style={{
             background: backgroundGradient,
           }}
         >
-          <h1 className="text-2xl sm:text-3xl text-white font-bold mb-4">{product.title}</h1>
-          <p className="text-4xl sm:text-5xl text-white font-bold">${product.price}</p>
-          <p className="text-base sm:text-lg text-white mb-4">{product.description}</p>
+          <h1 className="text-2xl md:text-3xl text-white font-bold mb-4">{product.title}</h1>
+          <p className="text-4xl md:text-5xl text-white font-bold">${product.price}</p>
+          <p className="text-base md:text-lg text-white mb-4">{product.description}</p>
 
           <div className="mb-4 flex ">
             <label htmlFor="size" className="text-white">
@@ -111,7 +111,7 @@ function ProductDetails({ id }) {
             </label>
             <select
               id="size"
-              className="form-select block w-32 ml-4 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              className="form-select block w-32 ml-4 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 md:text-sm"
             >
               <option value="">Select a size</option>
               <option value="small">Small</option>
@@ -174,7 +174,7 @@ function ProductDetails({ id }) {
       </div>
 
       {/* Adjust margin for mobile below the product details */}
-      <div className="sm:pt-0">
+      <div className="md:pt-0">
         <CatDisplay
           link={`https://fakestoreapi.com/products/category/${product.category}`}
           categoryTitle={`Other ${product.category} that you may like...`}

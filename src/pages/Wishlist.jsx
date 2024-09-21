@@ -35,8 +35,8 @@ function Wishlist() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="flex flex-col sm:flex-row w-full flex-grow" style={{ background: backgroundGradient }}>
-        <div className="flex flex-col w-full sm:w-2/3 pt-6 pl-6 pb-6 sm:pb-0">
+      <div className="flex flex-col md:flex-row w-full flex-grow" style={{ background: backgroundGradient }}>
+        <div className="flex flex-col w-full md:w-2/3 pt-6 md:px-6 pb-6 md:pb-0">
           <span className="text-8xl font-bold text-white">Wishlist</span>
           {wishlistItems.length === 0 ? (
             <div className="text-white text-center text-4xl italic">
@@ -47,7 +47,7 @@ function Wishlist() {
               <ShowWish />
             </div>
           )}
-          <div className="flex flex-col sm:flex-row justify-center pt-16 gap-4 sm:gap-36">
+          <div className="flex flex-col md:flex-row justify-center pt-16 gap-4 pl-3 md:gap-36">
             <span className="text-2xl font-bold text-white items-center">Feeling Cute Today?</span>
             <div className="flex flex-col gap-2 ">
               <button
@@ -67,7 +67,7 @@ function Wishlist() {
             </div>
           </div>
         </div>
-        <div className="w-full sm:w-1/3 pt-6 pr-6" style={{ background: backgroundGradient }}>
+        <div className="w-full md:w-1/3 pt-6 pr-6" style={{ background: backgroundGradient }}>
           <YouMayLike link="https://fakestoreapi.com/products?limit=9" />
         </div>
       </div>
