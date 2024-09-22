@@ -76,7 +76,7 @@ function Footer() {
 
                         {/* Copyright */}
                         <div className="w-full md:w-auto text-gray-400">
-                            © 2024 Sri's Design. All rights reserved.
+                            © 2024 Swapnabir Dutta. All rights reserved.
                         </div>
                     </div>
                 </div>
