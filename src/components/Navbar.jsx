@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
-import { useSelector } from "react-redux";
-import Search from "./Search";
-import SignInModal from "./SignInModal";
+import React, { useState } from 'react'; // Import React and useState hook
+import { useSelector } from "react-redux"; // Import useSelector hook from react-redux
+import Search from "./Search"; // Import Search component
+import SignInModal from "./SignInModal"; // Import SignInModal component
 
+// Navbar component definition
 const Navbar = () => {
+  // State to manage the visibility of the modal
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // State to manage the visibility of the sign in modal
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+  // State to hold the user data
   const [user, setUser] = useState(null);
 
+  // Function to handle sign in
   const handleSignIn = (userData) => {
     setUser(userData);
   };
 
+  // Select cart items from the Redux store
   const cartItems = useSelector((state) => state.cart.items);
+  // Select wishlist items from the Redux store
   const wishlistItems = useSelector((state) => state.wishlist.items);
 
+  // Function to toggle the menu
   const toggleMenu = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  // Render the Navbar component
   return (
     <div className="flex flex-col w-full h-auto items-center bg-[#FFF7F7] md:flex-row md:h-24 md:justify-between">
       {/* Mobile header */}
@@ -185,4 +194,5 @@ const Navbar = () => {
   );
 };
 
+// Export the Navbar component
 export default Navbar;

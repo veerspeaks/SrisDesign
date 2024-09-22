@@ -1,45 +1,61 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+// Define the Search component
 function Search() {
+  // Initialize state for searchTerm and set it to an empty string
   const [searchTerm, setSearchTerm] = useState('');
+  // Initialize state for filteredProducts and set it to an empty array
   const [filteredProducts, setFilteredProducts] = useState([]);
+  // Initialize state for products and set it to an empty array
   const [products, setProducts] = useState([]);
 
   // Fetch products only once when the component mounts
   useEffect(() => {
+    // Define an async function to fetch products
     const fetchProducts = async () => {
       try {
+        // Fetch products from the API
         const response = await fetch('https://fakestoreapi.com/products');
+        // Parse the response as JSON
         const data = await response.json();
+        // Update the state with the fetched products
         setProducts(data); // Set the products in state
       } catch (error) {
+        // Log any errors that occur during data fetching
         console.error('Error fetching data:', error);
       }
     };
 
+    // Call the fetchProducts function to start the data fetching process
     fetchProducts(); // Call the function
   }, []); // Empty dependency array to run only once
 
   // Filter products whenever searchTerm or products change
   useEffect(() => {
+    // Define a function to filter results based on searchTerm
     const filterResults = () => {
+      // If no searchTerm is entered, clear the search results
       if (!searchTerm) {
         setFilteredProducts([]); // Clear search if no term is entered
         return;
       }
 
+      // Filter products based on searchTerm
       const results = products.filter((product) =>
         product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.category.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
+      // Update the state with the filtered products
       setFilteredProducts(results);
     };
 
+    // Call the filterResults function to filter products
     filterResults();
   }, [searchTerm, products]); // Run this effect when searchTerm or products change
 
+  // JSX to render the Search component
   return (
     <div className="searchbar flex pt-4 items-center relative">
       <input

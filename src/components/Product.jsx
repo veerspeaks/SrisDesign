@@ -1,18 +1,23 @@
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/reducers/CartSlice";
-import AddToCartButton from "./AddToCartButton";
-import BuyNowButton from "./BuyNowButton";
-import Reviews from "./Reviews";
-import AddtoWishlistButton from "./AddtoWishlistButton";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom for routing
+import { useDispatch } from "react-redux"; // Import useDispatch from react-redux for dispatching actions
+import { addToCart } from "../redux/reducers/CartSlice"; // Import addToCart action from CartSlice
+import AddToCartButton from "./AddToCartButton"; // Import AddToCartButton component
+import BuyNowButton from "./BuyNowButton"; // Import BuyNowButton component
+import Reviews from "./Reviews"; // Import Reviews component
+import AddtoWishlistButton from "./AddtoWishlistButton"; // Import AddtoWishlistButton component
 
+// Define the Product component
 function Product({ id, image, title, price, rate, count }) {
+  // Initialize dispatch function from react-redux
   const dispatch = useDispatch();
 
+  // Function to handle adding a product to the cart
   const handleAddToCart = () => {
+    // Dispatch the addToCart action with product details
     dispatch(addToCart({ id, image, title, price }));
   };
 
+  // JSX for the Product component
   return (
     <div className="flex flex-wrap justify-center gap-4">
       <div

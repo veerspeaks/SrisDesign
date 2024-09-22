@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
-import Categories from '../components/categories';
-import Footer from '../components/Footer';
+import { useState } from 'react'; // Import useState hook for state management
+import { motion } from 'framer-motion'; // Import motion from framer-motion for animations
+import Navbar from '../components/Navbar'; // Import Navbar component
+import Categories from '../components/categories'; // Import Categories component
+import Footer from '../components/Footer'; // Import Footer component
 
+// CustomDesign component definition
 const CustomDesign = () => {
+  // Initialize state for form data
   const [formData, setFormData] = useState({
     productName: '',
     color: '',
@@ -13,31 +15,34 @@ const CustomDesign = () => {
     image: null,
   });
 
+  // Function to handle input changes in the form
   const handleInputChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value, files } = e.target; // Extract name, value, and files from the event target
     setFormData(prev => ({
       ...prev,
-      [name]: files ? files[0] : value
+      [name]: files ? files[0] : value // Update state with either the file or the value
     }));
   };
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    e.preventDefault(); // Prevent the default form submission behavior
+    // Handle form submission logic
+    console.log(formData); // Log the current form data to the console
   };
 
+  // JSX for the CustomDesign component
   return (
-      <div className=" flex-col min-h-screen bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center ">
-      <Navbar />
+      <div className="flex-col min-h-screen bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center">
+      <Navbar /> {/* Navbar component */}
       <div className='w-full pb-10'>
-      <Categories />
+      <Categories /> {/* Categories component */}
       </div>
       
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, y: 20 }} // Initial animation state
+        animate={{ opacity: 1, y: 0 }} // Animated state
+        transition={{ duration: 0.5 }} // Animation transition duration
         className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg"
       >
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -106,7 +111,7 @@ const CustomDesign = () => {
         </form>
       </motion.div>
       <div className='w-full pt-10'>
-        <Footer />
+        <Footer /> {/* Footer component */}
       </div>
       
     </div>

@@ -1,4 +1,6 @@
+// Footer component definition
 function Footer() {
+    // Render the footer
     return (
         <footer className="bg-gray-800 text-white py-8">
             <div className="container mx-auto px-4">
@@ -85,5 +87,5 @@ function Footer() {
     );
 }
 
+// Export the Footer component
 export default Footer;
-

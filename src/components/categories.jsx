@@ -1,40 +1,55 @@
 import { useEffect, useState } from 'react';
 
+// Categories component definition
 export default function Categories() {
+    // State to manage the scrollability of the category list
     const [isScrollable, setIsScrollable] = useState(false);
+    // State to hold the fetched categories data
     const [categories, setCategories] = useState([]);
+    // State to manage the visibility of the drawer
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+    // Effect to fetch categories data on component mount
     useEffect(() => {
         const fetchCategories = async () => {
+            // Fetch categories data from the API
             const res = await fetch('https://fakestoreapi.com/products/categories');
+            // Parse the response as JSON
             const data = await res.json();
+            // Update the state with the fetched categories
             setCategories(data);
         };
+        // Call the fetchCategories function to start the data fetching process
         fetchCategories();
     }, []);
 
+    // Effect to check if the category list is scrollable
     useEffect(() => {
-        const categoryList = document.getElementById('categoryList');
-
+        // Function to check if the category list is scrollable
         const checkScrollability = () => {
+            // Get the category list element
+            const categoryList = document.getElementById('categoryList');
+            // Check if the category list is scrollable
             if (categoryList && categoryList.scrollWidth > categoryList.clientWidth) {
+                // If scrollable, update the state
                 setIsScrollable(true);
             } else {
+                // If not scrollable, update the state
                 setIsScrollable(false);
             }
         };
 
-        // Initial check
+        // Initial check for scrollability
         checkScrollability();
 
-        // Re-check when window resizes
+        // Re-check scrollability when the window resizes
         window.addEventListener('resize', checkScrollability);
 
-        // Clean up the event listener
+        // Clean up the event listener on component unmount
         return () => window.removeEventListener('resize', checkScrollability);
     }, []);
 
+    // JSX for the categories component
     return (
         <div className="relative">
             <div className="flex flex-row rounded-lg pb-2 shadow-md bg-[#FFF7F7]">

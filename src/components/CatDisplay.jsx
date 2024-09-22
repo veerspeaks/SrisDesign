@@ -1,27 +1,37 @@
-import Product from './Product'; // No changes to Product component
-import { useEffect, useState, useRef } from 'react';
+import Product from './Product'; // Import Product component for rendering products
+import { useEffect, useState, useRef } from 'react'; // Import React hooks for state management and DOM manipulation
 
+// CatDisplay component definition
 function CatDisplay({ link, categoryTitle, categoryDescription, gradColor1, gradColor2 }) {
+    // State to hold the fetched products
     const [products, setProducts] = useState([]);
+    // Ref to access the scroll container DOM node
     const scrollContainerRef = useRef(null); // Use ref for scroll container
 
+    // Effect to fetch products data on component mount
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // Fetch data from the provided link
                 const response = await fetch(link);
+                // Parse the response as JSON
                 const data = await response.json();
+                // Update the state with the fetched data
                 setProducts(data);
             } catch (error) {
+                // Log any errors encountered during data fetching
                 console.error('Error fetching data:', error);
             }
         };
 
+        // Call the fetchData function to start the data fetching process
         fetchData();
     }, [link]);
 
     // Function to scroll the container to the right
     const handleScrollRight = () => {
         if (scrollContainerRef.current) {
+            // Smoothly scroll the container 300px to the right
             scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' });
         }
     };
@@ -29,16 +39,17 @@ function CatDisplay({ link, categoryTitle, categoryDescription, gradColor1, grad
     // Function to scroll the container to the left
     const handleScrollLeft = () => {
         if (scrollContainerRef.current) {
+            // Smoothly scroll the container 300px to the left
             scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' });
         }
     };
 
-    // Get category ID from the first product if available
+    // Extract category ID from the first product if available
     const categoryId = products.length > 0 ? products[0].category : null;
 
     return (
         <div className="flex flex-col" style={{ background: `linear-gradient(135deg, ${gradColor1} 0%, ${gradColor2} 100%)` }}>
-            <style jsx>{`
+            <style>{`
                 /* Custom CSS to hide scrollbar */
                 #scroll-container::-webkit-scrollbar {
                     display: none;

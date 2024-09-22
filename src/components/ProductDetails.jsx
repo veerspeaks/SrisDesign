@@ -5,30 +5,41 @@ import AddtoWishlistButton from "./AddtoWishlistButton";
 import Reviews from "./Reviews";
 import CatDisplay from "./CatDisplay";
 
+// Function to generate a random background gradient
+const generateGradient = () => {
+  return `linear-gradient(135deg, #${Math.floor(
+    Math.random() * 16777215
+  ).toString(16)} 0%, #${Math.floor(
+    Math.random() * 16777215
+  ).toString(16)} 100%)`;
+};
+
+// Main component for product details
 function ProductDetails({ id }) {
+  // State to hold the product data
   const [product, setProduct] = useState(null);
+  // State to manage the quantity of the product (not used in this selection)
   const [quantity, setQuantity] = useState(1);
+  // State to hold the background gradient for styling
   const [backgroundGradient, setBackgroundGradient] = useState("");
+  // State to hold the selected image for display
   const [selectedImage, setSelectedImage] = useState(null);
+  // State to hold additional information about the product
   const [additionalInformation, setAdditionalInformation] = useState(
     "Additional information"
   );
 
-  const generateGradient = () => {
-    return `linear-gradient(135deg, #${Math.floor(
-      Math.random() * 16777215
-    ).toString(16)} 0%, #${Math.floor(
-      Math.random() * 16777215
-    ).toString(16)} 100%)`;
-  };
-
+  // Effect to fetch product data when the component mounts
   useEffect(() => {
     const fetchProduct = async () => {
       try {
+        // Fetch product data from the API
         const response = await fetch(`https://fakestoreapi.com/products/${id}`);
         const data = await response.json();
+        // Update the state with the fetched product data
         setProduct(data);
-        setBackgroundGradient(generateGradient()); // Set the background gradient after fetching product
+        // Generate and set a random background gradient after fetching product
+        setBackgroundGradient(generateGradient());
       } catch (error) {
         console.error("Error fetching product details:", error);
       }
@@ -37,21 +48,26 @@ function ProductDetails({ id }) {
     fetchProduct();
   }, [id]);
 
+  // Effect to set the selected image based on the product data
   useEffect(() => {
     if (product) {
       // Check if images is an array or single image
       if (Array.isArray(product.images)) {
-        setSelectedImage(product.images[0]); // Use first image from array
+        // Use first image from array as the selected image
+        setSelectedImage(product.images[0]);
       } else if (product.image) {
-        setSelectedImage(product.image); // Use single image field
+        // Use single image field as the selected image
+        setSelectedImage(product.image);
       }
     }
   }, [product]);
 
+  // If product data is not yet fetched, display a loading message
   if (!product) {
     return <div>Loading...</div>;
   }
 
+  // JSX for the product details component
   return (
     <div className="">
       {/* For mobile version, make sure height and overflow are handled */}
