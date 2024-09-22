@@ -30,12 +30,12 @@ function ShowCart() {
                                 <img src={item.image} alt={item.name} className="w-12 h-12 mr-4 rounded-md" /> 
                                 <span>{item.name}</span>
                             </td>
-                            <td className="py-4 px-2 text-center">${item.price.toFixed(2)}</td> {/* Adjust padding */}
+                            <td className="py-4 px-2 text-center">₹{80 * item.price.toFixed(2)}</td> {/* Adjust padding */}
                             <td className="py-4 px-2 text-center">
                                 {/* Counter component */}
                                 <Counter initialQuantity={item.quantity} productId={item.id} />
                             </td>
-                            <td className="py-4 px-2 text-center">${(item.price * item.quantity).toFixed(2)}</td> {/* Adjust padding */}
+                            <td className="py-4 px-2 text-center">₹{80 * (item.price * item.quantity).toFixed(2)}</td> {/* Adjust padding */}
                             <td className="py-4 px-2 text-center">
                                 <button onClick={() => handleDeleteItem(item.id)} className="text-violet-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

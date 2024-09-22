@@ -29,7 +29,7 @@ function ShowWish() {
                                 <img src={item.image} alt={item.name} className="w-12 h-12 mr-4 rounded-md" /> 
                                 <span>{item.name}</span>
                             </td>
-                            <td className="py-4 px-4 text-center">${item.price.toFixed(2)}</td>
+                            <td className="py-4 px-4 text-center">₹{80 * item.price.toFixed(2)}</td>
                             <td className="py-4 px-4 text-center"><BuyNowButton id={item.id}  image={item.image} title={item.name} price={item.price} /></td>
                             <td className="py-4 px-4 text-center">
                                 <button onClick={() => handleDeleteItem(item.id)} className="text-violet-500">

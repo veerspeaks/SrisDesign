@@ -39,7 +39,7 @@ function Product({ id, image, title, price, rate, count }) {
             <Reviews rate={rate} count={count} />
           </div>
           <div className="flex mb-2 gap-4">
-            <div className="text-md font-semibold text-white">{`$${price}`}</div>
+            <div className="text-md font-semibold text-white">₹{80 * price}</div>
           </div>
           <div className="flex gap-2">
             <BuyNowButton

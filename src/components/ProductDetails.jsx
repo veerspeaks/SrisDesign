@@ -14,20 +14,21 @@ function ProductDetails({ id }) {
     "Additional information"
   );
 
+  const generateGradient = () => {
+    return `linear-gradient(135deg, #${Math.floor(
+      Math.random() * 16777215
+    ).toString(16)} 0%, #${Math.floor(
+      Math.random() * 16777215
+    ).toString(16)} 100%)`;
+  };
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(`https://fakestoreapi.com/products/${id}`);
         const data = await response.json();
         setProduct(data);
-
-        // Set the background gradient when the product data is loaded
-        const gradient = `linear-gradient(135deg, #${Math.floor(
-          Math.random() * 16777215
-        ).toString(16)} 0%, #${Math.floor(
-          Math.random() * 16777215
-        ).toString(16)} 100%)`;
-        setBackgroundGradient(gradient);
+        setBackgroundGradient(generateGradient()); // Set the background gradient after fetching product
       } catch (error) {
         console.error("Error fetching product details:", error);
       }
@@ -54,9 +55,9 @@ function ProductDetails({ id }) {
   return (
     <div className="">
       {/* For mobile version, make sure height and overflow are handled */}
-      <div className="flex flex-col md:flex-row items-center justify-center h-auto  md:mb-0">
+      <div className="flex flex-col md:flex-row items-center justify-center h-auto md:mb-0">
         <div className="flex flex-row gap-2 w-full md:w-1/2">
-          <div>
+          <div className="flex flex-col items-center">
             {/* Check if images is an array */}
             {Array.isArray(product.images) ? (
               product.images.map((image, index) => (
@@ -64,7 +65,7 @@ function ProductDetails({ id }) {
                   key={index}
                   src={image}
                   alt={product.title}
-                  className="w-24 h-24 md:w-32  mb-4 "
+                  className="w-24 h-24 md:w-32 mb-4 cursor-pointer"
                   onClick={() => setSelectedImage(image)}
                   style={{
                     border:
@@ -77,7 +78,7 @@ function ProductDetails({ id }) {
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-32 h-32 mb-4 "
+                className="w-32 h-32 mb-4 cursor-pointer"
                 onClick={() => setSelectedImage(product.image)}
                 style={{
                   border:
@@ -86,11 +87,12 @@ function ProductDetails({ id }) {
               />
             )}
           </div>
-          <div>
+          <div className="flex-grow">
             <img
               src={selectedImage}
               alt={product.title}
-              className="w-full h-full"
+              className="w-full h-full object-contain"
+              style={{ maxHeight: "500px" }} // Set a fixed height for the image container
             />
           </div>
         </div>
@@ -102,7 +104,7 @@ function ProductDetails({ id }) {
           }}
         >
           <h1 className="text-2xl md:text-3xl text-white font-bold mb-4">{product.title}</h1>
-          <p className="text-4xl md:text-5xl text-white font-bold">${product.price}</p>
+          <p className="text-4xl md:text-5xl text-white font-bold">₹{80 * product.price}</p>
           <p className="text-base md:text-lg text-white mb-4">{product.description}</p>
 
           <div className="mb-4 flex ">
@@ -143,9 +145,9 @@ function ProductDetails({ id }) {
               Additional information
             </p>
             <p
-              onClick={() => setAdditionalInformation("Shipping & Returns")}
+              onClick={() => setAdditionalInformation("At Sri's Design, we pride ourselves on providing exceptional shipping and returns services to ensure a seamless shopping experience for our customers. We offer fast and reliable shipping options, with most orders processed and dispatched within 24 hours. Our standard shipping typically takes 3-5 business days, while expedited shipping options are available for those who need their items sooner. We also provide international shipping to over 100 countries worldwide. Our returns policy is designed to be hassle-free and customer-friendly. If you are not completely satisfied with your purchase, you can return the item within 30 days of receipt for a full refund or exchange, provided the item is in its original condition and packaging. To initiate a return, simply contact our customer service team, who will guide you through the process and provide a prepaid return shipping label. Please note that certain items, such as personalized products and final sale items, are not eligible for returns. Additionally, any shipping charges incurred during the original purchase are non-refundable. For international returns, customers are responsible for return shipping costs and any applicable duties or taxes. We are committed to ensuring your satisfaction and will do everything we can to make your shopping experience with us a positive one. For more detailed information, please refer to our full Shipping and Returns Policy on our website.")}
               className={`text-white ${
-                additionalInformation === "Shipping & Returns"
+                additionalInformation === "At [Your Company Name], we pride ourselves on providing exceptional shipping and returns services to ensure a seamless shopping experience for our customers. We offer fast and reliable shipping options, with most orders processed and dispatched within 24 hours. Our standard shipping typically takes 3-5 business days, while expedited shipping options are available for those who need their items sooner. We also provide international shipping to over 100 countries worldwide. Our returns policy is designed to be hassle-free and customer-friendly. If you are not completely satisfied with your purchase, you can return the item within 30 days of receipt for a full refund or exchange, provided the item is in its original condition and packaging. To initiate a return, simply contact our customer service team, who will guide you through the process and provide a prepaid return shipping label. Please note that certain items, such as personalized products and final sale items, are not eligible for returns. Additionally, any shipping charges incurred during the original purchase are non-refundable. For international returns, customers are responsible for return shipping costs and any applicable duties or taxes. We are committed to ensuring your satisfaction and will do everything we can to make your shopping experience with us a positive one. For more detailed information, please refer to our full Shipping and Returns Policy on our website."
                   ? "border-b-2 border-white"
                   : ""
               }`}
@@ -166,7 +168,7 @@ function ProductDetails({ id }) {
 
           <div
             className="text-white px-8 mr-6 bg-white bg-opacity-20 rounded-lg"
-            style={{ overflowY: "hidden", maxHeight: "48px" }}
+            style={{ overflowY: "auto", maxHeight: "200px" }} // Adjusted height and overflow
           >
             {additionalInformation}
           </div>
